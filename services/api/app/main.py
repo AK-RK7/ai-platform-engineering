@@ -5,6 +5,10 @@ from fastapi import FastAPI
 from app.logging_config import configure_logging
 from app.telemetry import configure_telemetry
 
+from prometheus_client import make_asgi_app
+from app.middleware import MetricsMiddleware
+
+from app.routers.models import router as models_router
 
 configure_logging()
 
@@ -14,6 +18,12 @@ app = FastAPI()
 
 configure_telemetry(app)
 
+app.add_middleware(MetricsMiddleware)
+
+metrics_app = make_asgi_app()
+app.mount("/metrics", metrics_app)
+
+app.include_router(models_router)
 
 @app.get("/health")
 def health():

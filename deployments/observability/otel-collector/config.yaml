@@ -6,6 +6,16 @@ receivers:
       http:
         endpoint: 0.0.0.0:4318
 
+  prometheus:
+    config:
+      scrape_configs:
+        - job_name: ai-platform-api
+          scrape_interval: 10s
+          metrics_path: /metrics/
+          static_configs:
+            - targets:
+                - ai-platform-api:8000
+
 processors:
   memory_limiter:
     check_interval: 1s
@@ -20,10 +30,6 @@ exporters:
     verbosity: detailed
 
 service:
-  telemetry:
-    logs:
-      level: info
-
   pipelines:
     traces:
       receivers: [otlp]
@@ -31,7 +37,7 @@ service:
       exporters: [debug]
 
     metrics:
-      receivers: [otlp]
+      receivers: [otlp, prometheus]
       processors: [memory_limiter, batch]
       exporters: [debug]
 
