@@ -9,6 +9,7 @@ from prometheus_client import make_asgi_app
 from app.middleware import MetricsMiddleware
 
 from app.routers.models import router as models_router
+from app.routers.inference import router as inference_router
 
 configure_logging()
 
@@ -24,6 +25,7 @@ metrics_app = make_asgi_app()
 app.mount("/metrics", metrics_app)
 
 app.include_router(models_router)
+app.include_router(inference_router)
 
 @app.get("/health")
 def health():
