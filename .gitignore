@@ -1,15 +1,19 @@
-.venv/
+# Python
 __pycache__/
+*.py[cod]
 .pytest_cache/
-*.pyc
-
-# Python test coverage
 .coverage
 coverage.xml
 htmlcov/
 
-# ML generated artifacts
-artifacts/
+# Virtual environments
+.venv/
+venv/
 
-# Generated datasets
-data/processed/
+# Generated ML artifacts
+services/api/artifacts/
+find . -type f -name "*.pyc" -exec git rm --cached {} +
+
+# Generated processed datasets
+services/api/data/processed/
+
