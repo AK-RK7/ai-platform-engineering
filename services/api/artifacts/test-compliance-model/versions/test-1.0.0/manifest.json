@@ -1,0 +1,23 @@
+{
+  "model_name": "compliance-risk-classifier",
+  "version": "test-1.0.0",
+  "framework": "sklearn",
+  "task": "multiclass_classification",
+  "classes": [
+    "LOW",
+    "MEDIUM",
+    "HIGH",
+    "CRITICAL"
+  ],
+  "training_dataset": "compliance_findings_v1",
+  "feature_version": "1.0.0",
+  "metrics": {
+    "macro_f1": 0.8,
+    "high_recall": 0.9,
+    "critical_recall": 0.95
+  },
+  "artifact": "model.joblib",
+  "sha256": "aa8d45a19a8cd4b20f3c5862f5337805f12d51fa7614b59abfeac96d15d31f11",
+  "created_at": "2026-08-26T08:21:34.171555+00:00",
+  "status": "production"
+}

@@ -1,0 +1,19 @@
+{
+  "run_id": "0e263e9a-b32d-45ef-a53e-25daf7f53628",
+  "status": "completed",
+  "created_at": "2026-08-26T08:20:18.961326+00:00",
+  "parameters": {
+    "n_estimators": 100,
+    "random_state": 42,
+    "class_weight": "balanced"
+  },
+  "metrics": {
+    "validation_macro_f1": 0.7855724368943653
+  },
+  "tags": {
+    "model_name": "compliance-risk-classifier",
+    "algorithm": "RandomForestClassifier",
+    "model_version": "1.1.0"
+  },
+  "finished_at": "2026-08-26T08:20:19.652773+00:00"
+}
